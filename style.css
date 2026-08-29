@@ -1,0 +1,2282 @@
+/* ===================================================
+   PROJECT LAVENDER
+   FOUNDATION — FINAL
+=================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --cream:#FCFAF8;
+    --paper:rgba(255,255,255,.55);
+
+    --text:#433E49;
+    --muted:#726C78;
+
+    --pink:#EDD6EA;
+    --purple:#D9CFF7;
+
+    --shadow:rgba(73,64,95,.10);
+
+    --radius:38px;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    font-family:'Inter',sans-serif;
+
+    background:var(--cream);
+
+    color:var(--text);
+
+}
+
+/* ===========================================
+                BACKGROUND
+=========================================== */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-2;
+
+}
+
+/* Lavender Light */
+
+.blob1{
+
+    position:absolute;
+
+    width:760px;
+
+    height:760px;
+
+    top:-260px;
+
+    right:-250px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(217,207,247,.92),
+    rgba(217,207,247,.15),
+    transparent);
+
+    filter:blur(80px);
+
+    animation:floatOne 20s ease-in-out infinite;
+
+}
+
+/* Pink Light */
+
+.blob2{
+
+    position:absolute;
+
+    width:720px;
+
+    height:720px;
+
+    bottom:-250px;
+
+    left:-240px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    rgba(237,214,234,.92),
+    rgba(237,214,234,.15),
+    transparent);
+
+    filter:blur(80px);
+
+    animation:floatTwo 22s ease-in-out infinite;
+
+}
+
+/* Paper Grain */
+
+.grain{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+    radial-gradient(rgba(0,0,0,.025) 1px,transparent 1px);
+
+    background-size:8px 8px;
+
+    opacity:.22;
+
+    pointer-events:none;
+
+}
+
+/* Tiny Stars */
+
+.stars{
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.stars span{
+
+    position:absolute;
+
+    color:#CBBDE8;
+
+    opacity:.45;
+
+    animation:twinkle 7s ease-in-out infinite;
+
+}
+
+.stars span:nth-child(1){
+
+    top:13%;
+    left:16%;
+    font-size:18px;
+
+}
+
+.stars span:nth-child(2){
+
+    top:20%;
+    right:18%;
+    font-size:14px;
+
+}
+
+.stars span:nth-child(3){
+
+    bottom:20%;
+    left:22%;
+    font-size:13px;
+
+}
+
+.stars span:nth-child(4){
+
+    bottom:24%;
+    right:18%;
+    font-size:17px;
+
+}
+
+/* ===========================================
+                BOOK
+=========================================== */
+
+#book{
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px;
+
+}
+
+/* ===========================================
+                CHAPTER
+=========================================== */
+
+.chapter{
+
+    display:none;
+
+    width:100%;
+
+    max-width:880px;
+
+}
+
+.chapter.active{
+
+    display:block;
+
+    animation:fade .8s ease;
+
+}
+
+/* ===========================================
+                PAPER
+=========================================== */
+
+.content{
+
+    max-width:760px;
+
+    margin:auto;
+
+    background:var(--paper);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:var(--radius);
+
+    padding:95px 80px;
+
+    text-align:center;
+
+    box-shadow:
+    0 35px 90px var(--shadow);
+
+}
+
+/* ===========================================
+            TITLE
+=========================================== */
+
+#title{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:84px;
+
+    font-weight:500;
+
+    line-height:1;
+
+    letter-spacing:-1px;
+
+    color:var(--text);
+
+    min-height:170px;
+
+    opacity:0;
+
+}
+
+/* ===========================================
+          MESSAGE
+=========================================== */
+
+#message{
+
+    max-width:500px;
+
+    margin:18px auto 0;
+
+    font-size:19px;
+
+    line-height:1.95;
+
+    color:var(--muted);
+
+    opacity:0;
+
+}
+
+/* ===========================================
+            ANIMATIONS
+=========================================== */
+
+@keyframes floatOne{
+
+0%,100%{
+
+transform:translate(0,0);
+
+}
+
+50%{
+
+transform:translate(-35px,25px);
+
+}
+
+}
+
+@keyframes floatTwo{
+
+0%,100%{
+
+transform:translate(0,0);
+
+}
+
+50%{
+
+transform:translate(35px,-25px);
+
+}
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+transform:translateY(0);
+
+}
+
+50%{
+
+opacity:.7;
+
+transform:translateY(-4px);
+
+}
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(16px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+/* ===========================================
+        CHAPTER HEADINGS
+=========================================== */
+
+.chapterNumber{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:13px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#A197AE;
+
+    margin-bottom:22px;
+
+}
+
+h1{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:64px;
+
+    font-weight:500;
+
+    line-height:1.1;
+
+    color:var(--text);
+
+    margin-bottom:24px;
+
+}
+
+h2{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:46px;
+
+    font-weight:500;
+
+    line-height:1.15;
+
+    color:var(--text);
+
+    margin-bottom:18px;
+
+}
+
+.subtitle{
+
+    font-size:18px;
+
+    color:var(--muted);
+
+    margin-bottom:55px;
+
+    line-height:1.8;
+
+}
+
+/* ===========================================
+            BUTTONS
+=========================================== */
+
+button{
+
+    margin-top:55px;
+
+    padding:16px 42px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        135deg,
+        #E2BEDA,
+        #CDBDF0
+    );
+
+    color:white;
+
+    font-family:'Inter',sans-serif;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    letter-spacing:.3px;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+    box-shadow:
+    0 16px 45px rgba(193,168,221,.28);
+
+}
+
+button:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 24px 60px rgba(193,168,221,.38);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+/* ===========================================
+            LETTER
+=========================================== */
+
+.letter{
+
+    max-width:560px;
+
+    margin:auto;
+
+}
+
+.letter p{
+
+    font-size:18px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+    margin-bottom:28px;
+
+}
+
+/* ===========================================
+            QUALITIES
+=========================================== */
+
+.qualities{
+
+    margin-top:25px;
+
+}
+
+.qualities p{
+
+    font-size:22px;
+
+    line-height:2.2;
+
+    color:var(--text);
+
+    font-family:'Cormorant Garamond',serif;
+
+}
+
+/* ===========================================
+            ENDING
+=========================================== */
+
+.ending{
+
+    max-width:560px;
+
+    margin:30px auto;
+
+    font-size:18px;
+
+    line-height:2;
+
+    color:var(--muted);
+
+}
+
+.love{
+
+    margin-top:45px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:40px;
+
+    color:var(--text);
+
+    letter-spacing:.4px;
+
+}
+
+/* ===========================================
+        TYPEWRITER CURSOR
+=========================================== */
+
+.cursor{
+
+    display:inline-block;
+
+    color:#B69EDC;
+
+    animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
+
+/* ===========================================
+            MOBILE
+=========================================== */
+
+@media(max-width:768px){
+
+.content{
+
+padding:60px 34px;
+
+}
+
+#title{
+
+font-size:62px;
+
+min-height:130px;
+
+}
+
+h1{
+
+font-size:48px;
+
+}
+
+h2{
+
+font-size:36px;
+
+}
+
+.subtitle,
+#message,
+.letter p,
+.ending{
+
+font-size:17px;
+
+}
+
+button{
+
+width:100%;
+
+max-width:260px;
+
+}
+
+}
+/* ===========================================
+            GALLERY
+=========================================== */
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:28px;
+
+    margin-top:45px;
+
+}
+
+.photoCard{
+
+    background:rgba(255,255,255,.55);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+
+    box-shadow:0 18px 45px rgba(90,80,110,.08);
+
+}
+
+.photoCard:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 28px 60px rgba(90,80,110,.15);
+
+}
+
+.photoCard img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.photoCard p{
+
+    padding:18px;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    color:var(--muted);
+
+}
+
+/* ===========================================
+        PAGE TRANSITIONS
+=========================================== */
+
+.chapter{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    position:absolute;
+
+    width:100%;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-48%);
+
+    transition:
+
+    opacity .8s ease,
+
+    transform .8s ease,
+
+    visibility .8s;
+
+}
+
+.chapter.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translate(-50%,-50%);
+
+}
+
+/* ===========================================
+        MUSIC BUTTON
+=========================================== */
+
+#musicButton{
+
+    margin-top:55px;
+
+    background:transparent;
+
+    color:var(--text);
+
+    border:1px solid rgba(100,90,120,.15);
+
+    backdrop-filter:blur(10px);
+
+}
+
+#musicButton:hover{
+
+    background:rgba(255,255,255,.35);
+
+}
+
+/* ===========================================
+        SCROLLABLE CHAPTERS
+=========================================== */
+
+.content{
+
+    max-height:82vh;
+
+    overflow-y:auto;
+
+}
+
+.content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.content::-webkit-scrollbar-thumb{
+
+    background:#D9CFF7;
+
+    border-radius:100px;
+
+}
+
+.content::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+/* ===========================================
+        RESPONSIVE GALLERY
+=========================================== */
+
+@media(max-width:768px){
+
+.gallery{
+
+grid-template-columns:1fr;
+
+gap:20px;
+
+}
+
+.photoCard img{
+
+height:260px;
+
+}
+
+}
+/* ===========================================
+        POKÉMON CHAPTER
+=========================================== */
+
+.pokemonContent{
+
+    max-width:760px;
+
+    margin:auto;
+
+    padding:75px 65px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.58);
+
+    border-radius:34px;
+
+    box-shadow:
+    0 30px 80px rgba(70,65,90,.10);
+
+}
+
+.pokemonLabel{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+
+    color:#8C8497;
+
+    margin-bottom:24px;
+
+}
+
+.pokemonTitle{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:52px;
+
+    font-weight:500;
+
+    color:#403A47;
+
+    margin-bottom:14px;
+
+}
+
+.pokemonIntro{
+
+    font-size:17px;
+
+    color:#77717D;
+
+    line-height:1.8;
+
+    margin-bottom:42px;
+
+}
+
+/* ---------- Pokémon card ---------- */
+
+.pokemonCard{
+
+    max-width:500px;
+
+    margin:auto;
+
+    padding:30px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.8),
+        rgba(239,233,250,.7)
+    );
+
+    border:1px solid rgba(120,105,145,.12);
+
+    border-radius:24px;
+
+    box-shadow:
+    0 18px 45px rgba(80,70,100,.08);
+
+    text-align:left;
+
+}
+
+.pokemonTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    color:#71697A;
+
+}
+
+.pokemonDivider{
+
+    height:1px;
+
+    background:rgba(100,90,120,.12);
+
+    margin:22px 0;
+
+}
+
+/* ---------- Stats ---------- */
+
+.pokemonStats{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.stat{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    font-size:15px;
+
+    color:#625B69;
+
+}
+
+.stat span:last-child{
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    color:#9585B2;
+
+}
+
+/* ---------- Ability ---------- */
+
+.pokemonAbility{
+
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:#6F6876;
+
+}
+
+.pokemonAbility strong{
+
+    color:#4C4654;
+
+    font-weight:500;
+
+}
+
+.pokemonEnding{
+
+    margin-top:38px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:30px;
+
+    font-style:italic;
+
+    color:#62566F;
+
+}
+
+/* ---------- Pokémon button ---------- */
+
+.pokemonButton{
+
+    margin-top:32px;
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:768px){
+
+    .pokemonContent{
+
+        padding:55px 28px;
+
+    }
+
+    .pokemonTitle{
+
+        font-size:42px;
+
+    }
+
+    .pokemonCard{
+
+        padding:24px;
+
+    }
+
+    .stat{
+
+        font-size:14px;
+
+    }
+
+}
+/* ===========================================
+        SHANGRI-LA FRONTIER QUEST
+=========================================== */
+
+.questContent{
+
+    width: min(720px, 90%);
+
+    margin: auto;
+
+    padding: 70px 55px;
+
+    text-align: center;
+
+    background: rgba(248,247,252,.72);
+
+    border: 1px solid rgba(100,90,130,.12);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(55,50,80,.10);
+
+}
+
+.questLabel{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    color:#81788F;
+
+    margin-bottom:25px;
+
+}
+
+.questTitle{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:48px;
+
+    font-weight:500;
+
+    color:#403B49;
+
+    margin-bottom:18px;
+
+}
+
+.questIntro{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    color:#77717D;
+
+    margin-bottom:40px;
+
+}
+
+
+/* ---------- Locked quest ---------- */
+
+.questLocked{
+
+    max-width:520px;
+
+    margin:auto;
+
+    padding:28px;
+
+    border:1px solid rgba(100,90,130,.16);
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.55);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
+}
+
+.questTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-family:'Inter',sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2.5px;
+
+    color:#81788F;
+
+}
+
+.questLine{
+
+    height:1px;
+
+    background:rgba(100,90,130,.12);
+
+    margin:22px 0;
+
+}
+
+.classified{
+
+    font-family:'Inter',sans-serif;
+
+    letter-spacing:5px;
+
+    color:#9A91A6;
+
+    font-size:13px;
+
+    margin:28px 0;
+
+}
+
+.lockedText{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:21px;
+
+    font-style:italic;
+
+    line-height:1.6;
+
+    color:#69616F;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ---------- Unlock button ---------- */
+
+#unlockQuest{
+
+    padding:13px 27px;
+
+    border:1px solid rgba(100,90,130,.25);
+
+    border-radius:30px;
+
+    background:transparent;
+
+    color:#5D5667;
+
+    font-family:'Inter',sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:1.5px;
+
+    cursor:pointer;
+
+    transition:
+        background .4s ease,
+        color .4s ease,
+        transform .4s ease;
+
+}
+
+#unlockQuest:hover{
+
+    background:#5D5667;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ---------- Revealed quest ---------- */
+
+.questRevealed{
+
+    display:none;
+
+    max-width:560px;
+
+    margin:auto;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+}
+
+.questRevealed.show{
+
+    display:block;
+
+    animation:
+        questReveal .9s ease forwards;
+
+}
+
+@keyframes questReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.accepted{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    color:#887BA2;
+
+    margin-bottom:30px;
+
+}
+
+.questMessage{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:21px;
+
+    line-height:1.8;
+
+    color:#57505F;
+
+}
+
+.questMessage em{
+
+    color:#75638D;
+
+}
+
+
+/* ---------- Quest information ---------- */
+
+.questDetails{
+
+    margin:38px auto;
+
+    padding:24px;
+
+    border-top:1px solid rgba(100,90,130,.12);
+
+    border-bottom:1px solid rgba(100,90,130,.12);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:17px;
+
+}
+
+.questDetails div{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:25px;
+
+    text-align:left;
+
+}
+
+.questDetails span{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#938A9D;
+
+}
+
+.questDetails strong{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:13px;
+
+    font-weight:400;
+
+    color:#625B69;
+
+    text-align:right;
+
+}
+
+.questAcceptedText{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:25px;
+
+    font-style:italic;
+
+    color:#62566F;
+
+    margin:30px 0;
+
+}
+
+.questContinue{
+
+    margin-top:5px;
+
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:600px){
+
+    .questContent{
+
+        padding:55px 25px;
+
+    }
+
+    .questTitle{
+
+        font-size:40px;
+
+    }
+
+    .questMessage{
+
+        font-size:19px;
+
+    }
+
+    .questDetails{
+
+        padding:20px 5px;
+
+    }
+
+}
+/* ===========================================
+        THE QUIET CHAPTER
+=========================================== */
+
+#quietChapter{
+
+    background:transparent;
+
+}
+
+.quietContent{
+
+    width:min(680px, 90%);
+
+    margin:auto;
+
+    padding:80px 50px 70px;
+
+    text-align:center;
+
+}
+
+.quietLabel{
+
+    font-family:'Inter',sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    color:#99909B;
+
+    margin-bottom:28px;
+
+}
+
+.quietTitle{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:46px;
+
+    font-weight:500;
+
+    line-height:1.2;
+
+    color:#48414B;
+
+    margin:0;
+
+}
+
+.quietDivider{
+
+    width:45px;
+
+    height:1px;
+
+    background:#C9C0CC;
+
+    margin:35px auto 50px;
+
+}
+
+.quietText{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:21px;
+
+    line-height:1.85;
+
+    color:#625A65;
+
+}
+
+.quietText p{
+
+    margin:0 0 38px;
+
+}
+
+.quietText em{
+
+    font-style:italic;
+
+    color:#75697A;
+
+}
+
+.quietText .emphasis{
+
+    font-size:27px;
+
+    color:#514957;
+
+    margin-top:48px;
+
+    margin-bottom:48px;
+
+}
+
+.quietText .bigEmphasis{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:32px;
+
+    color:#665675;
+
+    margin-top:50px;
+
+    margin-bottom:50px;
+
+}
+
+.finalQuiet{
+
+    font-size:29px;
+
+    font-style:italic;
+
+    color:#65566F;
+
+    margin-top:55px !important;
+
+}
+
+.quietAfterthought{
+
+    margin-top:65px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:18px;
+
+    font-style:italic;
+
+    line-height:1.8;
+
+    color:#918892;
+
+}
+
+.quietButton{
+
+    margin-top:45px;
+
+}
+
+
+/* ---------- Gentle appearance ---------- */
+
+#quietChapter.active .quietContent{
+
+    animation:quietAppear 1.4s ease both;
+
+}
+
+@keyframes quietAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:600px){
+
+    .quietContent{
+
+        padding:60px 25px;
+
+    }
+
+    .quietTitle{
+
+        font-size:39px;
+
+    }
+
+    .quietText{
+
+        font-size:19px;
+
+        line-height:1.8;
+
+    }
+
+    .quietText .bigEmphasis{
+
+        font-size:29px;
+
+    }
+
+}
+/* ==========================================
+   POKÉMON THEME
+========================================== */
+
+body.theme-pokemon {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf5 0%,
+            #f7eef2 50%,
+            #eeeaf8 100%
+        );
+
+}
+
+
+/* subtle Poké Ball watermark */
+
+body.theme-pokemon::before {
+
+    content:"";
+
+    position:fixed;
+
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(170,70,75,.10);
+
+    top:-100px;
+    right:-80px;
+
+    z-index:0;
+
+    pointer-events:none;
+
+}
+
+
+body.theme-pokemon::after {
+
+    content:"";
+
+    position:fixed;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(90,100,170,.08);
+
+    bottom:-60px;
+    left:-50px;
+
+    z-index:0;
+
+    pointer-events:none;
+
+}
+
+
+/* Pokémon chapter itself */
+
+#pokemonChapter {
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+#pokemonChapter .content {
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* little game-like label */
+
+#pokemonChapter .chapterNumber {
+
+    font-family:'Inter',sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    color:#9A7074;
+
+}
+
+
+/* title */
+
+#pokemonChapter h2 {
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:46px;
+
+    font-weight:500;
+
+    color:#403A43;
+
+    line-height:1.15;
+
+}
+
+
+/* Pokémon cards */
+
+#pokemonChapter .pokemonCard {
+
+    background:rgba(255,255,255,.62);
+
+    border:1px solid rgba(100,80,100,.12);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:
+        0 18px 45px rgba(70,60,80,.08);
+
+}
+
+
+/* buttons */
+
+#pokemonChapter button {
+
+    border:1px solid rgba(110,80,95,.22);
+
+    background:rgba(255,255,255,.55);
+
+    color:#62535D;
+
+    border-radius:30px;
+
+    padding:13px 26px;
+
+    font-family:'Inter',sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    transition:
+        background .4s ease,
+        transform .4s ease;
+
+}
+
+
+#pokemonChapter button:hover {
+
+    background:#62535D;
+
+    color:white;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* Pokémon chapter entrance */
+
+#pokemonChapter.active .content {
+
+    animation:
+        pokemonAppear 1s ease both;
+
+}
+
+
+@keyframes pokemonAppear {
+
+    from {
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to {
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================
+   CHAPTER SCROLL FIX
+========================================== */
+
+html,
+body {
+
+    min-height:100%;
+
+    overflow-x:hidden;
+
+    overflow-y:auto;
+
+}
+
+
+#book {
+
+    min-height:100vh;
+
+    height:auto;
+
+    overflow:visible;
+
+}
+
+
+.chapter {
+
+    min-height:100vh;
+
+    height:auto;
+
+    overflow:visible;
+
+}
+
+
+/*
+   Long chapters can now actually scroll.
+*/
+
+#pokemonChapter,
+#animeChapter,
+#quietChapter {
+
+    min-height:100vh;
+
+    height:auto;
+
+    overflow:visible;
+
+}
+
+
+/*
+   Keep the background behind everything.
+*/
+
+#background {
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    z-index:0;
+
+    pointer-events:none;
+
+}
+
+
+/*
+   Make sure the actual book sits above
+   the background.
+*/
+
+#book {
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/*
+   Content is allowed to extend beyond
+   the first screen.
+*/
+
+#pokemonChapter .content,
+#animeChapter .content,
+#quietChapter .content {
+
+    min-height:100vh;
+
+    height:auto;
+
+    padding-top:80px;
+
+    padding-bottom:100px;
+
+}
+/* ==========================================
+   FINAL LONG-CHAPTER POSITION FIX
+========================================== */
+
+.chapter {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.chapter.active {
+    transform: none;
+}
+
+#pokemonChapter,
+#animeChapter,
+#quietChapter {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+}
+/* ==========================================
+   FINAL CHAPTER THEMES
+   Pokémon / Shangri-La Frontier / Quiet Place
+========================================== */
+
+
+/* =========================
+   🎮 POKÉMON — POKÉDEX
+========================= */
+
+#pokemonChapter {
+    background:
+        radial-gradient(circle at 85% 15%,
+            rgba(210, 150, 155, .12),
+            transparent 28%),
+        radial-gradient(circle at 15% 85%,
+            rgba(145, 155, 205, .10),
+            transparent 30%);
+}
+
+#pokemonChapter::before {
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border:1px solid rgba(150,75,85,.10);
+    border-radius:50%;
+    top:-100px;
+    right:-80px;
+}
+
+#pokemonChapter .pokemonContent {
+    position:relative;
+    border:1px solid rgba(100,85,105,.12);
+    background:rgba(255,255,255,.60);
+}
+
+#pokemonChapter .pokemonLabel {
+    letter-spacing:4px;
+    color:#9A7074;
+}
+
+#pokemonChapter .pokemonTitle {
+    letter-spacing:-.5px;
+}
+
+#pokemonChapter .pokemonCard {
+    position:relative;
+    border:1px solid rgba(130,100,115,.16);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.88),
+            rgba(241,237,247,.72)
+        );
+}
+
+/* little Pokédex-style corner */
+
+#pokemonChapter .pokemonCard::before {
+    content:"POKÉDEX";
+    position:absolute;
+    top:14px;
+    right:20px;
+    font-family:'Inter',sans-serif;
+    font-size:8px;
+    letter-spacing:2px;
+    color:#AAA0AD;
+}
+
+#pokemonChapter .stat span:last-child {
+    color:#88779F;
+}
+
+#pokemonChapter .pokemonEnding {
+    letter-spacing:.3px;
+}
+
+
+/* =========================
+   ⚔️ SHANGRI-LA FRONTIER
+========================= */
+
+#animeChapter {
+    background:
+        radial-gradient(circle at 20% 20%,
+            rgba(105,95,140,.10),
+            transparent 30%),
+        radial-gradient(circle at 85% 80%,
+            rgba(155,140,175,.10),
+            transparent 28%);
+}
+
+/* game-interface lines */
+
+#animeChapter .questContent {
+    position:relative;
+    border:1px solid rgba(90,80,120,.16);
+    background:rgba(247,246,251,.70);
+}
+
+/* tiny system label */
+
+#animeChapter .questContent::before {
+    content:"SYSTEM // ONLINE";
+    position:absolute;
+    top:18px;
+    left:24px;
+    font-family:'Inter',sans-serif;
+    font-size:8px;
+    letter-spacing:2px;
+    color:#A09AAA;
+}
+
+/* quest title */
+
+#animeChapter .questTitle {
+    letter-spacing:.3px;
+}
+
+/* quest file */
+
+#animeChapter .questLocked {
+    position:relative;
+    border-radius:14px;
+    border:1px solid rgba(90,80,120,.18);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.72),
+            rgba(237,234,246,.60)
+        );
+}
+
+/* little status indicator */
+
+#animeChapter .questTop span:last-child {
+    color:#8B7CA0;
+}
+
+/* revealed quest */
+
+#animeChapter .questRevealed {
+    border-top:1px solid rgba(90,80,120,.12);
+    padding-top:30px;
+}
+
+/* quest details feel like game stats */
+
+#animeChapter .questDetails {
+    background:rgba(255,255,255,.25);
+    padding:24px 20px;
+}
+
+/* quest accepted */
+
+#animeChapter .accepted {
+    letter-spacing:4px;
+    color:#75638D;
+}
+
+
+/* =========================
+   🌙 QUIET PLACE
+========================= */
+
+#quietChapter {
+    background:
+        radial-gradient(circle at 50% 35%,
+            rgba(255,255,255,.25),
+            transparent 45%);
+}
+
+#quietChapter .quietContent {
+    position:relative;
+}
+
+#quietChapter .quietDivider {
+    opacity:.7;
+}
+
+#quietChapter .quietText {
+    max-width:560px;
+    margin:auto;
+}
+
+#quietChapter .finalQuiet {
+    letter-spacing:.2px;
+}
+
+
+/* =========================
+   📱 MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    #pokemonChapter .pokemonContent {
+        padding:55px 28px;
+    }
+
+    #animeChapter .questContent {
+        padding:60px 25px;
+    }
+
+    #quietChapter .quietContent {
+        padding:60px 25px;
+    }
+
+}
+/* ==========================================
+   CHAPTER NAVIGATION
+========================================== */
+
+.chapterNavigation {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    margin-top:45px;
+}
+
+.chapterNavigation button {
+    margin-top:0;
+}
+
+.backButton {
+    background:transparent !important;
+    color:var(--muted) !important;
+    border:1px solid rgba(100,90,120,.15) !important;
+    box-shadow:none !important;
+}
+
+.backButton:hover {
+    background:rgba(255,255,255,.35) !important;
+    transform:translateY(-3px);
+}
+
+@media(max-width:600px) {
+
+    .chapterNavigation {
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .chapterNavigation button {
+        width:100%;
+        max-width:260px;
+    }
+
+}
+/* ==========================================
+   FINAL CHAPTER NAVIGATION
+========================================== */
+
+.finalNavigation {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:45px;
+}
+
+.finalNavigation button {
+    margin-top:0;
+}
+
+.restartButton {
+    padding:16px 30px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(
+        135deg,
+        #E2BEDA,
+        #CDBDF0
+    );
+    color:white;
+    font-family:'Inter',sans-serif;
+    font-size:15px;
+    cursor:pointer;
+    transition:.35s ease;
+    box-shadow:
+        0 16px 45px rgba(193,168,221,.28);
+}
+
+.restartButton:hover {
+    transform:translateY(-4px);
+}
+
+.finalNavigation #musicButton {
+    margin-top:0;
+}
+
+@media(max-width:600px){
+
+    .finalNavigation {
+        flex-direction:column;
+    }
+
+    .finalNavigation button {
+        width:100%;
+        max-width:260px;
+    }
+
+}
